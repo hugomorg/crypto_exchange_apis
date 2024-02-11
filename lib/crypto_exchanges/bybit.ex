@@ -1,13 +1,29 @@
 defmodule CryptoExchanges.Bybit do
+  @moduledoc """
+  https://bybit-exchange.github.io/docs/
+  """
   defmodule V5 do
+    @moduledoc """
+    https://bybit-exchange.github.io/docs/v5/intro
+    """
+
+    @doc """
+    https://bybit-exchange.github.io/docs/v5/market/tickers
+    """
     def get_tickers(opts \\ []) do
       Req.get("https://api.bybit.com/v5/market/tickers", opts)
     end
 
+    @doc """
+    https://bybit-exchange.github.io/docs/v5/market/history-fund-rate
+    """
     def get_funding_rate_history(opts \\ []) do
       Req.get("https://api.bybit.com/v5/market/funding/history", opts)
     end
 
+    @doc """
+    https://bybit-exchange.github.io/docs/v5/position
+    """
     def get_position_info(api_key, api_secret, opts \\ []) do
       Req.get(
         "https://api.bybit.com/v5/position/list",
