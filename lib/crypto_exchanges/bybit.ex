@@ -31,7 +31,10 @@ defmodule CryptoExchanges.Bybit do
       )
     end
 
-    def get_trade_history(api_key, api_secret, opts \\ []) do
+    @doc """
+    https://bybit-exchange.github.io/docs/api-explorer/v5/position/execution
+    """
+    def get_execution_list(api_key, api_secret, opts \\ []) do
       Req.get(
         "https://api.bybit.com/v5/execution/list",
         CryptoExchanges.Bybit.generate_signature(api_key, api_secret, opts)
