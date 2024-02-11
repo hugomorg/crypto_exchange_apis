@@ -15,6 +15,13 @@ defmodule CryptoExchangeAPIs.Bybit do
     end
 
     @doc """
+    https://bybit-exchange.github.io/docs/v5/market/instrument
+    """
+    def get_instruments_info(opts \\ []) do
+      Req.get("https://api.bybit.com/v5/market/instruments-info", opts)
+    end
+
+    @doc """
     https://bybit-exchange.github.io/docs/v5/market/history-fund-rate
     """
     def get_funding_rate_history(opts \\ []) do
