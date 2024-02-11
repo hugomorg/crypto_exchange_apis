@@ -7,13 +7,17 @@ defmodule CryptoExchanges.Bybit do
     Req.get("https://api.bybit.com/v5/position/list", generate_signature(opts))
   end
 
+  def trade_history(opts \\ []) do
+    Req.get("https://api.bybit.com/v5/execution/list", generate_signature(opts))
+  end
+
   defp generate_signature(opts) do
     {api_key, opts} = Keyword.pop(opts, :api_key)
     {api_secret, opts} = Keyword.pop(opts, :api_secret)
 
     timestamp = DateTime.to_unix(DateTime.utc_now(), :millisecond)
 
-    query_string = URI.encode_query(opts[:params])
+    query_string = URI.encode_query(opts[:params] || [])
 
     signature = hmac(api_secret, "#{timestamp}#{api_key}#{query_string}")
 
