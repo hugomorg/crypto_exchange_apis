@@ -8,25 +8,22 @@ defmodule CryptoExchanges.Bybit do
       Req.get("https://api.bybit.com/v5/market/funding/history", opts)
     end
 
-    def get_position_info(opts \\ []) do
+    def get_position_info(api_key, api_secret, opts \\ []) do
       Req.get(
         "https://api.bybit.com/v5/position/list",
-        CryptoExchanges.Bybit.generate_signature(opts)
+        CryptoExchanges.Bybit.generate_signature(api_key, api_secret, opts)
       )
     end
 
-    def get_trade_history(opts \\ []) do
+    def get_trade_history(api_key, api_secret, opts \\ []) do
       Req.get(
         "https://api.bybit.com/v5/execution/list",
-        CryptoExchanges.Bybit.generate_signature(opts)
+        CryptoExchanges.Bybit.generate_signature(api_key, api_secret, opts)
       )
     end
   end
 
-  def generate_signature(opts) do
-    {api_key, opts} = Keyword.pop(opts, :api_key)
-    {api_secret, opts} = Keyword.pop(opts, :api_secret)
-
+  def generate_signature(api_key, api_secret, opts) do
     timestamp = DateTime.to_unix(DateTime.utc_now(), :millisecond)
 
     query_string = URI.encode_query(opts[:params] || [])
