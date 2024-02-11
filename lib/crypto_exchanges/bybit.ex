@@ -1,21 +1,29 @@
 defmodule CryptoExchanges.Bybit do
-  def tickers(opts \\ []) do
-    Req.get("https://api.bybit.com/v5/market/tickers", opts)
+  defmodule V5 do
+    def tickers(opts \\ []) do
+      Req.get("https://api.bybit.com/v5/market/tickers", opts)
+    end
+
+    def funding_rate_history(opts \\ []) do
+      Req.get("https://api.bybit.com/v5/market/funding/history", opts)
+    end
+
+    def position_info(opts \\ []) do
+      Req.get(
+        "https://api.bybit.com/v5/position/list",
+        CryptoExchanges.Bybit.generate_signature(opts)
+      )
+    end
+
+    def trade_history(opts \\ []) do
+      Req.get(
+        "https://api.bybit.com/v5/execution/list",
+        CryptoExchanges.Bybit.generate_signature(opts)
+      )
+    end
   end
 
-  def funding_rate_history(opts \\ []) do
-    Req.get("https://api.bybit.com/v5/market/funding/history", opts)
-  end
-
-  def position_info(opts \\ []) do
-    Req.get("https://api.bybit.com/v5/position/list", generate_signature(opts))
-  end
-
-  def trade_history(opts \\ []) do
-    Req.get("https://api.bybit.com/v5/execution/list", generate_signature(opts))
-  end
-
-  defp generate_signature(opts) do
+  def generate_signature(opts) do
     {api_key, opts} = Keyword.pop(opts, :api_key)
     {api_secret, opts} = Keyword.pop(opts, :api_secret)
 
