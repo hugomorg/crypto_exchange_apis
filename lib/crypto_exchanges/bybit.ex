@@ -3,6 +3,10 @@ defmodule CryptoExchanges.Bybit do
     Req.get("https://api.bybit.com/v5/market/tickers", opts)
   end
 
+  def funding_rate_history(opts \\ []) do
+    Req.get("https://api.bybit.com/v5/market/funding/history", opts)
+  end
+
   def position_info(opts \\ []) do
     Req.get("https://api.bybit.com/v5/position/list", generate_signature(opts))
   end
