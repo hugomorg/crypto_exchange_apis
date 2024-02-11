@@ -1,21 +1,21 @@
 defmodule CryptoExchanges.Bybit do
   defmodule V5 do
-    def tickers(opts \\ []) do
+    def get_tickers(opts \\ []) do
       Req.get("https://api.bybit.com/v5/market/tickers", opts)
     end
 
-    def funding_rate_history(opts \\ []) do
+    def get_funding_rate_history(opts \\ []) do
       Req.get("https://api.bybit.com/v5/market/funding/history", opts)
     end
 
-    def position_info(opts \\ []) do
+    def get_position_info(opts \\ []) do
       Req.get(
         "https://api.bybit.com/v5/position/list",
         CryptoExchanges.Bybit.generate_signature(opts)
       )
     end
 
-    def trade_history(opts \\ []) do
+    def get_trade_history(opts \\ []) do
       Req.get(
         "https://api.bybit.com/v5/execution/list",
         CryptoExchanges.Bybit.generate_signature(opts)

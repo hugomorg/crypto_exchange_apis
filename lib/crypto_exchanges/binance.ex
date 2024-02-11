@@ -1,19 +1,19 @@
 defmodule CryptoExchanges.Binance do
   defmodule Futures do
     defmodule V1 do
-      def exchange_info(opts \\ []) do
+      def get_exchange_info(opts \\ []) do
         Req.get("https://fapi.binance.com/fapi/v1/exchangeInfo", opts)
       end
 
-      def mark_price(opts \\ []) do
+      def get_mark_price(opts \\ []) do
         Req.get("https://fapi.binance.com/fapi/v1/premiumIndex", opts)
       end
 
-      def funding_rate(opts \\ []) do
+      def get_funding_rate(opts \\ []) do
         Req.get("https://fapi.binance.com/fapi/v1/fundingRate", opts)
       end
 
-      def income_history(api_key, api_secret, opts \\ []) do
+      def get_income_history(api_key, api_secret, opts \\ []) do
         opts = CryptoExchanges.Binance.generate_signature(api_secret, opts)
 
         default_headers = [{"X-MBX-APIKEY", api_key}]
@@ -31,7 +31,7 @@ defmodule CryptoExchanges.Binance do
     end
 
     defmodule V2 do
-      def positions(api_key, api_secret, opts \\ []) do
+      def get_positions(api_key, api_secret, opts \\ []) do
         opts = CryptoExchanges.Binance.generate_signature(api_secret, opts)
 
         default_headers = [{"X-MBX-APIKEY", api_key}]
