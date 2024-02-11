@@ -29,6 +29,24 @@ defmodule CryptoExchanges.Binance do
         Req.get("https://fapi.binance.com/fapi/v1/income", opts)
       end
     end
+
+    defmodule V2 do
+      def positions(api_key, api_secret, opts \\ []) do
+        opts = CryptoExchanges.Binance.generate_signature(api_secret, opts)
+
+        default_headers = [{"X-MBX-APIKEY", api_key}]
+
+        opts =
+          Keyword.update(
+            opts,
+            :headers,
+            default_headers,
+            &Keyword.merge(&1, default_headers)
+          )
+
+        Req.get("https://fapi.binance.com/fapi/v2/positionRisk", opts)
+      end
+    end
   end
 
   def generate_signature(api_secret, opts) do
