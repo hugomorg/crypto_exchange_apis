@@ -1,4 +1,4 @@
-defmodule CryptoExchanges.OKX do
+defmodule CryptoExchangeAPIs.OKX do
   defmodule V5 do
     @moduledoc """
     https://www.okx.com/docs-v5/en/

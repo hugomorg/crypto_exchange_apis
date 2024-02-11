@@ -1,1 +1,1 @@
-alias CryptoExchanges.{Binance, Bybit, Kucoin, OKX}
+alias CryptoExchangeAPIs.{Binance, Bybit, Kucoin, OKX}

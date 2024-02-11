@@ -1,4 +1,4 @@
-defmodule CryptoExchanges.Bybit do
+defmodule CryptoExchangeAPIs.Bybit do
   @moduledoc """
   https://bybit-exchange.github.io/docs/
   """
@@ -27,7 +27,7 @@ defmodule CryptoExchanges.Bybit do
     def get_position_info(api_key, api_secret, opts \\ []) do
       Req.get(
         "https://api.bybit.com/v5/position/list",
-        CryptoExchanges.Bybit.generate_signature(api_key, api_secret, opts)
+        CryptoExchangeAPIs.Bybit.generate_signature(api_key, api_secret, opts)
       )
     end
 
@@ -37,7 +37,7 @@ defmodule CryptoExchanges.Bybit do
     def get_execution_list(api_key, api_secret, opts \\ []) do
       Req.get(
         "https://api.bybit.com/v5/execution/list",
-        CryptoExchanges.Bybit.generate_signature(api_key, api_secret, opts)
+        CryptoExchangeAPIs.Bybit.generate_signature(api_key, api_secret, opts)
       )
     end
   end

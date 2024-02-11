@@ -1,9 +1,9 @@
-defmodule CryptoExchanges.MixProject do
+defmodule CryptoExchangeAPIs.MixProject do
   use Mix.Project
 
   def project do
     [
-      app: :crypto_exchanges,
+      app: :crypto_exchange_apis,
       version: "0.1.0",
       elixir: "~> 1.14",
       start_permanent: Mix.env() == :prod,
@@ -11,9 +11,9 @@ defmodule CryptoExchanges.MixProject do
       description: "Crypto currency exchange APIs.",
       package: [
         licenses: ["MIT"],
-        links: %{"GitHub" => "https://github.com/hugomorg/crypto_exchanges"}
+        links: %{"GitHub" => "https://github.com/hugomorg/crypto_exchange_apis"}
       ],
-      source_url: "https://github.com/hugomorg/crypto_exchanges"
+      source_url: "https://github.com/hugomorg/crypto_exchange_apis"
     ]
   end
 

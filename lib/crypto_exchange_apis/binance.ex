@@ -1,4 +1,4 @@
-defmodule CryptoExchanges.Binance do
+defmodule CryptoExchangeAPIs.Binance do
   defmodule Futures do
     @moduledoc """
     https://binance-docs.github.io/apidocs/futures/en/#general-info
@@ -30,7 +30,7 @@ defmodule CryptoExchanges.Binance do
       https://binance-docs.github.io/apidocs/futures/en/#get-income-history-user_data
       """
       def get_income_history(api_key, api_secret, opts \\ []) do
-        opts = CryptoExchanges.Binance.generate_signature(api_secret, opts)
+        opts = CryptoExchangeAPIs.Binance.generate_signature(api_secret, opts)
 
         default_headers = [{"X-MBX-APIKEY", api_key}]
 
@@ -51,7 +51,7 @@ defmodule CryptoExchanges.Binance do
       https://binance-docs.github.io/apidocs/futures/en/#position-information-v2-user_data
       """
       def get_positions(api_key, api_secret, opts \\ []) do
-        opts = CryptoExchanges.Binance.generate_signature(api_secret, opts)
+        opts = CryptoExchangeAPIs.Binance.generate_signature(api_secret, opts)
 
         default_headers = [{"X-MBX-APIKEY", api_key}]
 

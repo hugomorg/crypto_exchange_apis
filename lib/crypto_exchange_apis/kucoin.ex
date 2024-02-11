@@ -1,4 +1,4 @@
-defmodule CryptoExchanges.Kucoin do
+defmodule CryptoExchangeAPIs.Kucoin do
   @moduledoc """
   https://www.kucoin.com/docs/beginners/introduction
   """

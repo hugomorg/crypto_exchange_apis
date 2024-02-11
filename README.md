@@ -1,11 +1,11 @@
-# CryptoExchanges
+# CryptoExchangeAPIs
 
-`CryptoExchanges` is intended to be a thin wrapper over some cryptocurrency exchange APIs.
+`CryptoExchangeAPIs` is intended to be a thin wrapper over some cryptocurrency exchange APIs.
 
 Each function accepts an optional keyword list, where `params` and `headers` can be passed. For example:
 
 ```elixir
-CryptoExchanges.Binance.Futures.V1.get_funding_rate(params: [symbol: "ETHUSDT"])
+CryptoExchangeAPIs.Binance.Futures.V1.get_funding_rate(params: [symbol: "ETHUSDT"])
 ```
 
 Each authenticated endpoint has arguments you need to pass to generate signed headers etc.
@@ -13,12 +13,12 @@ Each authenticated endpoint has arguments you need to pass to generate signed he
 Here's an example with Bybit:
 
 ```elixir
-CryptoExchanges.Bybit.V5.get_position_info(api_key, api_secret, params: [category: "linear", symbol: "ETHUSD"])
+CryptoExchangeAPIs.Bybit.V5.get_position_info(api_key, api_secret, params: [category: "linear", symbol: "ETHUSD"])
 ```
 
 Each exchange has its own module, namespaced by API version and maybe API structure: for example, some APIs have separate resources for futures.
 
-Under the hood, `CryptoExchanges` uses the excellent HTTP library [`req`](https://github.com/wojtekmach/req). All options unless otherwise noted are forwarded to `req`, so check out the docs there if you want more information.
+Under the hood, `CryptoExchangeAPIs` uses the excellent HTTP library [`req`](https://github.com/wojtekmach/req). All options unless otherwise noted are forwarded to `req`, so check out the docs there if you want more information.
 
 ## Installation
 
@@ -28,7 +28,7 @@ by adding `crypto_exchanges` to your list of dependencies in `mix.exs`:
 ```elixir
 def deps do
   [
-    {:crypto_exchanges, "~> 0.1.0"}
+    {:crypto_exchange_apis, "~> 0.1.0"}
   ]
 end
 ```
