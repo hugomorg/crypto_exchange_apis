@@ -39,7 +39,7 @@ defmodule CryptoExchangeAPIs.Bybit do
     end
 
     @doc """
-    https://bybit-exchange.github.io/docs/api-explorer/v5/position/execution
+    https://bybit-exchange.github.io/docs/v5/order/execution
     """
     def get_execution_list(api_key, api_secret, opts \\ []) do
       Req.get(
