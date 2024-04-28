@@ -12,6 +12,13 @@ defmodule CryptoExchangeAPIs.Kucoin do
       end
 
       @doc """
+      https://www.kucoin.com/docs/rest/futures-trading/funding-fees/get-public-funding-history
+      """
+      def get_past_funding_rates(opts \\ []) do
+        Req.get("https://api-futures.kucoin.com/api/v1/contract/funding-rates", opts)
+      end
+
+      @doc """
       https://www.kucoin.com/docs/rest/futures-trading/market-data/get-symbols-list
       """
       def get_symbols(opts \\ []) do
