@@ -24,3 +24,5 @@ crypto_exchanges-*.tar
 
 # Temporary files, for example, from tests.
 /tmp/
+
+tags
