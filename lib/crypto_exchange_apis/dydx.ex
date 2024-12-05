@@ -24,5 +24,12 @@ defmodule CryptoExchangeAPIs.DYdX do
     def get_asset_positions(opts \\ []) do
       Req.get("https://indexer.dydx.trade/v4/assetPositions", opts)
     end
+
+    @doc """
+    https://docs.dydx.exchange/api_integration-indexer/indexer_api#listpositions
+    """
+    def list_positions(opts \\ []) do
+      Req.get("https://indexer.dydx.trade/v4/perpetualPositions", opts)
+    end
   end
 end
