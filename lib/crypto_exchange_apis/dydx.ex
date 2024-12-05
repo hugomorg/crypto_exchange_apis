@@ -17,5 +17,12 @@ defmodule CryptoExchangeAPIs.DYdX do
     def get_historical_funding(symbol, opts \\ []) do
       Req.get("https://indexer.dydx.trade/v4/historicalFunding/#{symbol}", opts)
     end
+
+    @doc """
+    https://docs.dydx.exchange/api_integration-indexer/indexer_api#getassetpositions
+    """
+    def get_asset_positions(opts \\ []) do
+      Req.get("https://indexer.dydx.trade/v4/assetPositions", opts)
+    end
   end
 end
