@@ -31,5 +31,15 @@ defmodule CryptoExchangeAPIs.DYdX do
     def list_positions(opts \\ []) do
       Req.get("https://indexer.dydx.trade/v4/perpetualPositions", opts)
     end
+
+    @doc """
+    https://docs.dydx.exchange/api_integration-indexer/indexer_api#getparentsubaccount
+    """
+    def get_parent_subaccount(address, parent_subaccount_number, opts \\ []) do
+      Req.get(
+        "https://indexer.dydx.trade/v4/addresses/#{address}/parentSubaccountNumber/#{parent_subaccount_number}",
+        opts
+      )
+    end
   end
 end
